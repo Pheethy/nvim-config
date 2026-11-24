@@ -14,6 +14,12 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- Load optional machine-local credentials before plugins initialize.
+local secrets_path = vim.fn.stdpath("config") .. "/local-secrets.lua"
+if vim.fn.filereadable(secrets_path) == 1 then
+  dofile(secrets_path)
+end
+
 require("lazy").setup({
   spec = {
     -- add LazyVim and import its plugins

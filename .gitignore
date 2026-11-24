@@ -6,3 +6,16 @@ debug
 foo.*
 *.log
 data
+
+# Local credentials and environment files
+/local-secrets.lua
+.env
+.env.*
+!.env.example
+
+# Editor backups and machine-local files
+*.backup*
+*~
+*.swp
+*.swo
+.DS_Store
